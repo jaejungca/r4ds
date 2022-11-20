@@ -1,0 +1,85 @@
+---
+title: "Ch4-Workflow basics"
+author: "Jae Min Jung"
+date: "2022-11-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 4.1. Coding basics
+
+- assignment
+ ojbect_name <- value # “object name gets value”
+
+- shortcut for " <- " is "alt" and "-" sign. 
+- usesnake_case where you separate lowercase words with _.
+- You can inspect an object by typing its name:
+```{r}
+x <- 3 * 4
+x
+```
+
+# 4.2. What's in a name?
+
+```{r}
+this_is_a_really_long_name <- 2.5
+this_is_a_really_long_name <- 3.5
+```
+
+```{r}
+r_rocks <- 2 ^ 3
+r_rocks
+```
+
+# 4.3. Calling functions
+```{r protocol}
+function_name(arg1 = val1, arg2 = val2, ...)
+```
+
+Let’s try using seq() which makes regular sequences of numbers and, while we’re at it, learn more helpful features of RStudio. Type se and hit TAB. A popup shows you possible completions. Specify seq() by typing more (a “q”) to disambiguate, or by using ↑/↓ arrows to select. Notice the floating tooltip that pops up, reminding you of the function’s arguments and purpose. If you want more help, press F1 to get all the details in the help tab in the lower right pane.
+se
+```{r}
+seq() # two tabs
+seq(1, 10)
+
+y <- seq(1, 10, length.out = 5) # no action
+(y <- seq(1, 10, length.out = 5)) # action
+```
+
+# 4.4. Exercises
+
+## 4.4.1 Why does this code not work?
+```{r}
+my_variable <- 10
+my_varıable
+#> Error in eval(expr, envir, enclos): object 'my_varıable' not found
+my_variable
+```
+
+## 4.4.2. Tweak each of the following R commands so that they run correctly:
+```{r Q4.2}
+library(tidyverse)
+
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+fliter(mpg, cyl = 8)
+filter(diamond, carat > 3)
+```
+
+```{r Q4.2 key}
+library(tidyverse)
+
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+filter(mpg, cyl = 8)
+filter(diamonds, carat > 3)
+
+```
+
+## 4.4.3. Press Alt + Shift + K. What happens? How can you get to the same place using the menus?
+
